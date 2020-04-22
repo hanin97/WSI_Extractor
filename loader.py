@@ -48,7 +48,7 @@ class BasicLoader:
             yield openslide.OpenSlide(slide_path), os.path.basename(slide_path)
 
     def get_patch(self, pointer, start_rc):
-        patch = pointer.read_region(start_rc, self.ds_rate, (self.patch_size, self.patch_size))
+        patch = pointer.read_region(start_rc, self.ds_rate, (self.patch_size, self.patch_size)).convert('RGB')
         return patch
 
 
